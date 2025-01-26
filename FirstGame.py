@@ -17,7 +17,7 @@ player_2_image = pygame.image.load('Ghost.png')
 
 # Scale the images if needed
 player_1_image = pygame.transform.scale(player_1_image, (60, 60))
-player_2_image = pygame.transform.scale(player_2_image, (100, 100))
+player_2_image = pygame.transform.scale(player_2_image, (200, 200))
 
 # Initialize player positions
 player_1_pos = pygame.Vector2(screen.get_width() / 2 - 100, screen.get_height() / 2)
@@ -52,20 +52,20 @@ while running:
         player_1_pos.x += 300 * dt
 
     # Handle player 2 automatic movement towards player 1
-    if player_1_pos.y > player_2_pos.y:
+    if player_1_pos.y > player_2_pos.y + 50:
         player_2_pos.y += 200 * dt
-    if player_1_pos.y < player_2_pos.y:
+    if player_1_pos.y < player_2_pos.y + 50:
         player_2_pos.y -= 200 * dt
-    if player_1_pos.x > player_2_pos.x:
+    if player_1_pos.x > player_2_pos.x + 50:
         player_2_pos.x += 200 * dt
-    if player_1_pos.x < player_2_pos.x:
+    if player_1_pos.x < player_2_pos.x + 50:
         player_2_pos.x -= 200 * dt
 
     # Draw player names above their positions
     text_rect = text_1_surface.get_rect(center=(player_1_pos.x + 30, player_1_pos.y - 40))
     screen.blit(text_1_surface, text_rect)
 
-    text_rect = text_2_surface.get_rect(center=(player_2_pos.x + 35, player_2_pos.y - 40))
+    text_rect = text_2_surface.get_rect(center=(player_2_pos.x + 100, player_2_pos.y - 40))
     screen.blit(text_2_surface, text_rect)
 
     pygame.display.flip()
